@@ -96,7 +96,7 @@ public class FlutterMidiPlugin implements MethodCallHandler, FlutterPlugin {
       int _note = call.argument("note");
       try {
         ShortMessage msg = new ShortMessage();
-        msg.setMessage(ShortMessage.NOTE_ON, 0, _note, 127);
+        msg.setMessage(ShortMessage.NOTE_ON, 0, _note, 90);
         recv.send(msg, -1);
       } catch (InvalidMidiDataException e) {
         e.printStackTrace();
@@ -105,7 +105,7 @@ public class FlutterMidiPlugin implements MethodCallHandler, FlutterPlugin {
       int _note = call.argument("note");
       try {
         ShortMessage msg = new ShortMessage();
-        msg.setMessage(ShortMessage.NOTE_OFF, 0, _note, 127);
+        msg.setMessage(ShortMessage.NOTE_OFF, 0, _note, 90);
         recv.send(msg, -1);
       } catch (InvalidMidiDataException e) {
         e.printStackTrace();
