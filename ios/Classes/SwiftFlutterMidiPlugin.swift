@@ -34,6 +34,14 @@ public class SwiftFlutterMidiPlugin: NSObject, FlutterPlugin {
       case "unmute":
         do {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
+                let engine = AVAudioEngine()
+                let reverb = AVAudioUnitReverb()
+                reverb.loadFactoryPreset(.mediumHall)
+                engine.attach(reverb)
+                engine.connect(reverb, to: engine.outputNode, format: nil)
+                engine.attach(au)
+                engine.connect(au, to: reverb, format: nil)
+            try engine.start()
         } catch {
             print(error)
         }
